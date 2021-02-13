@@ -1,3 +1,6 @@
+<!-- <div class="search__panel">
+    <input type="text" placeholder="Search ... " (keyup)="getFilteredData($event)" class="form-control">
+</div> -->
 <div class="post">
     <div class="post__detail">
         <div class="content">
@@ -9,8 +12,8 @@
              </button>
            </div>
            <div class="content__detail">
-               <h3>{{postTitle}}</h3>
-               <p>{{postBody}}</p>
+               <h3>{{postData.title}}</h3>
+               <p>{{postData.body}}</p>
            </div>
         </div>
     </div>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PageEvent } from '@angular/material/paginator';
 import { ActivatedRoute } from '@angular/router';
 import { DefaultService } from '../default.service';
 
@@ -15,6 +16,10 @@ export class PostComponent implements OnInit {
   userName = '';
   apiPostList;
   loaderStart = false;
+  totalPosts = 0;
+  postPerPage = 5;
+  currentPage = 1;
+  pageSizeOptions=[1,2,5,10];
 
   constructor(private defaultService: DefaultService,
               private activatedRoute: ActivatedRoute) {
@@ -29,7 +34,11 @@ export class PostComponent implements OnInit {
    
   getUsersPosts() {
     this.loaderStart = true;
-    this.defaultService.getUsersPosts(this.userId).subscribe((res:any) => {
+    this.defaultService.getUsersPosts(this.userId, '', '').subscribe((res:any) => {
+      this.totalPosts = res.length
+    });
+
+    this.defaultService.getUsersPosts(this.userId, this.currentPage, this.postPerPage).subscribe((res:any) => {
       this.loaderStart = false;
       if(res.length > 0) {
         this.defaultService.snack("Post fetched successfully!")
@@ -47,5 +56,16 @@ export class PostComponent implements OnInit {
   }
   getFilteredPosts(event) {
     this.postData = this.apiPostList.filter(post => post.title.toLowerCase().indexOf(event.target.value.toLowerCase()) > -1);
+  }
+
+  onChangedPage(pageData : PageEvent){
+    this.loaderStart=true;
+    this.currentPage = (pageData.pageIndex)*this.postPerPage;
+    this.postPerPage = pageData.pageSize
+    this.defaultService.getUsersPosts(this.userId, this.currentPage, this.postPerPage).subscribe((res:any) => {
+       this.loaderStart = false;
+       this.postData = res
+       this.apiPostList = res
+    });
   }
 }

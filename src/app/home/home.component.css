@@ -21,3 +21,6 @@ input:not(:last-child) {
     text-decoration: none;
     color: #01579b;
 }
+td {
+    vertical-align: middle;
+}

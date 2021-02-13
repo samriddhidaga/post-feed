@@ -31,8 +31,8 @@ export class DefaultService {
    )
  }
 
- getUsersPosts(userId) {
-    return this.http.get('https://jsonplaceholder.typicode.com/posts?userId='+userId)
+ getUsersPosts(userId, startPage, postsPerPage) {
+    return this.http.get('https://jsonplaceholder.typicode.com/posts?userId='+userId+'&_start='+startPage+'&_limit='+postsPerPage)
     .pipe(map((res:any) => {
       return res;
     }),

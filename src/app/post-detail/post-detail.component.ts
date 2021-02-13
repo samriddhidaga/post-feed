@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { throwMatDialogContentAlreadyAttachedError } from '@angular/material';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DefaultService } from '../default.service';
 
@@ -10,12 +11,12 @@ import { DefaultService } from '../default.service';
 export class PostDetailComponent implements OnInit {
 
   postId;
-  postTitle='';
-  postBody='';
+  postData = '';
   loaderStart = false;
   showComments = false;
   comments;
   userId;
+  apiData;
 
   constructor(private defaultService: DefaultService,
              private activatedRoute: ActivatedRoute,
@@ -33,8 +34,9 @@ export class PostDetailComponent implements OnInit {
     this.defaultService.getPostDetail(this.postId).subscribe((res:any) => {
        this.loaderStart = false;
        this.showComments = false;
-       this.postTitle = res.title;
-       this.postBody = res.body;
+       this.defaultService.snack("Details fetched successfully!");
+       this.postData = res;
+       this.apiData = res;
        this.userId = res.userId;
        this.getPostComments();
     })
@@ -59,5 +61,9 @@ export class PostDetailComponent implements OnInit {
   showComment() {
     this.showComments = this.showComments == true ? false : true;
   }
+
+  // getFilteredData(event) {
+  //   this.postData = this.apiData.filter(post => (post.title || post.body).toLowerCase().indexOf(event.target.value.toLowerCase()) > -1)
+  // }
 
 }

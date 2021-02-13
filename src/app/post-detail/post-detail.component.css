@@ -101,3 +101,13 @@ p {
 .name, .body {
     font-size: 1.3rem;
 }
+.search__panel {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
+}
+input {
+    width: 30rem;
+    height: 3rem;
+    border: 1px solid #0277bd;
+}

@@ -19,6 +19,9 @@
         </div>
     </div>
 </div>
+<mat-paginator [length]="totalPosts" [pageSize]="postPerPage"
+[pageSizeOptions]="pageSizeOptions" (page)="onChangedPage($event)"></mat-paginator>
+
 <div class="loader_api" *ngIf="loaderStart">
     <mat-spinner></mat-spinner>
 </div>
