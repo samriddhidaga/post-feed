@@ -1,0 +1,23 @@
+th {
+    text-align: middle;
+    font-size: 1.6rem;
+    font-weight: bold;
+    color: #000;
+}
+.search__panel {
+    display: flex;
+    margin-bottom: 1rem;
+    justify-content: flex-end;
+}
+input {
+    width: 30rem;
+    height: 3rem;
+    border: 1px solid #01579b;
+}
+input:not(:last-child) {
+    margin-right: 1rem;
+}
+.view__post:link, .view__post:visited {
+    text-decoration: none;
+    color: #01579b;
+}

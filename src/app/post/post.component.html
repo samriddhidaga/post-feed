@@ -1,0 +1,24 @@
+<div class="search__panel">
+    <h2>Posts for - {{userName}}</h2>
+    <input type="text" placeholder="Search ... " (keyup)="getFilteredPosts($event)" class="form-control">
+</div>
+<div *ngFor="let post of postData">
+    <div class="post__details">
+        <!-- <div class="post__user">
+            <svg class="detail">
+                <use xlink:href="../../assets/img/sprite.svg#icon-user"></use>
+            </svg>
+        </div> -->
+        <div class="post__body">{{post.title}}</div>
+        <div class="post__detail">
+            <a href="/post-detail/{{post.id}}">
+                <svg class="detail">
+                    <use xlink:href="../../assets/img/sprite.svg#icon-chevron-thin-right"></use>
+                </svg>
+            </a>
+        </div>
+    </div>
+</div>
+<div class="loader_api" *ngIf="loaderStart">
+    <mat-spinner></mat-spinner>
+</div>

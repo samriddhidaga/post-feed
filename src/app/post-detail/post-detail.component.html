@@ -1,0 +1,42 @@
+<div class="post">
+    <div class="post__detail">
+        <div class="content">
+           <div class="content__header">
+             <button class="btn btn-link" (click)="deletePost()">
+                <svg class="svg__trash">
+                    <use xlink:href="../../assets/img/sprite.svg#icon-bin"></use>
+                 </svg>
+             </button>
+           </div>
+           <div class="content__detail">
+               <h3>{{postTitle}}</h3>
+               <p>{{postBody}}</p>
+           </div>
+        </div>
+    </div>
+    <div class="comment">
+        <svg class="message__svg">
+            <use xlink:href="../../assets/img/sprite.svg#icon-message"></use>
+         </svg>
+       <button class="btn btn-link comment__text" (click)="showComment()">Comments</button>
+    </div>
+</div>
+<div class="comment__section" *ngIf="showComments">
+    <div *ngFor="let comment of comments">
+        <div class="comment__details">
+            <div class="user__image">
+                <svg class="detail">
+                    <use xlink:href="../../assets/img/sprite.svg#icon-user"></use>
+                </svg>
+            </div>
+            <div class="comment__sec">
+                <p class="email">{{comment.email}}</p>
+                <p class="name">{{comment.name}}</p>
+                <p class="body">{{comment.body}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="loader_api" *ngIf="loaderStart">
+    <mat-spinner></mat-spinner>
+</div>
