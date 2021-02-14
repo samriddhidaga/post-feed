@@ -76,6 +76,11 @@ p {
     display: flex;
     margin-bottom: 1rem;
 }
+@media only screen and (max-width: 800px) {
+    .comment__details {
+        flex-direction: column-reverse;
+    }
+}
 .user__image {
     flex: 0 0 5%;
     background-color: #0277bd;
@@ -92,6 +97,11 @@ p {
     height: 2.5rem;
     width: 2.5rem;
     fill: #fff;
+}
+@media only screen and (max-width: 800px) {
+    .detail {
+        visibility: hidden;
+    }
 }
 .email {
     font-weight: bold;

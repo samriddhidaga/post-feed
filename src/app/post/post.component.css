@@ -14,6 +14,11 @@ h2 {
     min-height: 5rem;
     margin-top: 1rem;
 }
+@media only screen and (max-width: 850px) {
+    .post__details {
+        width: 90%;
+    }
+}
 .post__user {
     flex: 0 0 3%;
     background-color: #0277bd;
@@ -46,6 +51,11 @@ h2 {
     border-bottom: 1px solid #eee;
     justify-content: space-between;
 }
+@media only screen and (max-width: 850px) {
+    .search__panel {
+        flex-direction: column;
+    }
+}
 input {
     width: 30rem;
     height: 3rem;
@@ -53,4 +63,9 @@ input {
 }
 mat-paginator {
     width: 80%;
+}
+@media only screen and (max-width: 850px) {
+    mat-paginator {
+        width: 90%;
+    }
 }
