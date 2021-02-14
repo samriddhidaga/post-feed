@@ -43,14 +43,17 @@ export class PostDetailComponent implements OnInit {
   }
 
   getPostComments() {
+    this.loaderStart = true;
     this.defaultService.getPostComments(this.postId).subscribe((res:any) => {
+        this.loaderStart = false;
         this.comments = res;
     })
   }
 
   deletePost() {
-    console.log(this.postId);
+    this.loaderStart = true;
     this.defaultService.deletePosts(this.postId).subscribe((res:any) => {
+       this.loaderStart = false;
         if(res) {
           this.router.navigate(['/post/'+this.userId]);
           this.defaultService.snack("Post deleted successfully!");

@@ -14,7 +14,10 @@ export class HomeComponent implements OnInit {
    displayedColumns = ['name','company','action'];
    listData: MatTableDataSource<any>;
    apiNameList;
+   cardList;
    loaderStart = false;
+   viewAsTable = true;
+   viewAsCard = false;
 
   constructor(private defaultService: DefaultService) { 
      this.getUsers();
@@ -33,6 +36,7 @@ export class HomeComponent implements OnInit {
         this.defaultService.snack("Users fetched");
         this.listData = new MatTableDataSource(res);
         this.listData.paginator = this.paginator;
+        this.cardList = res;
         this.apiNameList = res;
       }
     })
@@ -45,5 +49,15 @@ export class HomeComponent implements OnInit {
 
   getFilteredCompany(event) {
     this.listData = this.apiNameList.filter(company => company.company.name.toLowerCase().indexOf(event.target.value.toLowerCase()) > -1);
+  }
+
+  onChangeView(str) {
+      if(str === 'table') {
+        this.viewAsTable = true;
+        this.viewAsCard = false;
+      } else {
+        this.viewAsCard = true;
+        this.viewAsTable = false;
+      }
   }
 }
