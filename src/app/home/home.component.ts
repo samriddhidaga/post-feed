@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
    loaderStart = false;
    viewAsTable = true;
    viewAsCard = false;
+   viewAsPanel = false;
 
   constructor(private defaultService: DefaultService) { 
      this.getUsers();
@@ -44,20 +45,34 @@ export class HomeComponent implements OnInit {
   
   
   getFilteredUsers(event) {
-    this.listData = this.apiNameList.filter(user => user.name.toLowerCase().indexOf(event.target.value.toLowerCase()) > -1);
+     if(this.viewAsTable) {
+      this.listData = this.apiNameList.filter(user => user.name.toLowerCase().indexOf(event.target.value.toLowerCase()) > -1);
+     } else {
+      this.cardList = this.apiNameList.filter(user => user.name.toLowerCase().indexOf(event.target.value.toLowerCase()) > -1);
+     }
   }
 
   getFilteredCompany(event) {
-    this.listData = this.apiNameList.filter(company => company.company.name.toLowerCase().indexOf(event.target.value.toLowerCase()) > -1);
+    if(this.viewAsTable) {
+      this.listData = this.apiNameList.filter(company => company.company.name.toLowerCase().indexOf(event.target.value.toLowerCase()) > -1);
+    } else {
+      this.cardList = this.apiNameList.filter(company => company.company.name.toLowerCase().indexOf(event.target.value.toLowerCase()) > -1);
+    }
   }
 
   onChangeView(str) {
       if(str === 'table') {
         this.viewAsTable = true;
         this.viewAsCard = false;
-      } else {
+        this.viewAsPanel = false;
+      } else if(str === 'card'){
         this.viewAsCard = true;
         this.viewAsTable = false;
+        this.viewAsPanel = false;
+      } else {
+         this.viewAsPanel = true;
+         this.viewAsCard = false;
+         this.viewAsTable = false;
       }
   }
 }

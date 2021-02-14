@@ -10,7 +10,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { DefaultService } from './default.service';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, MatSlideToggleModule, MatSnackBarModule, MatTableModule } from '@angular/material';
+import { MatExpansionModule, MatInputModule, MatPaginatorModule, MatProgressSpinnerModule, MatSlideToggleModule, MatSnackBarModule, MatTableModule } from '@angular/material';
 import { HttpClientModule } from '@angular/common/http';
 import { PostDetailComponent } from './post-detail/post-detail.component';
 
@@ -35,7 +35,8 @@ import { PostDetailComponent } from './post-detail/post-detail.component';
     MatPaginatorModule,
     MatInputModule,
     MatProgressSpinnerModule,
-    MatSlideToggleModule
+    MatSlideToggleModule,
+    MatExpansionModule
   ],
   providers: [DefaultService],
   bootstrap: [AppComponent]

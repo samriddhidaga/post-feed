@@ -12,6 +12,12 @@
             </svg>
             View as cards
         </button>
+        <button class="btn btn-link" (click)="onChangeView('panel')">
+            <svg class="view__table">
+                <use xlink:href="../../assets/img/sprite.svg#icon-chevron-thin-down"></use>
+            </svg>
+            View as Panel
+        </button>
     </div>
     <div class="filter">
         <input type="text" placeholder="Name" (keyup)="getFilteredUsers($event)" class="form-control">
@@ -58,6 +64,23 @@
                </div>
             </div>
        </div>
+   </div>
+</div>
+<div class="panel__view" *ngIf="viewAsPanel">
+   <div *ngFor="let user of cardList">
+    <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{user.name}}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p><strong>Company : {{user.company.name}}</strong></p>
+            <mat-action-row>
+                <a href="/post/{{user.id}}" class="view__post">VIEW POSTS</a>
+            </mat-action-row>
+        </mat-expansion-panel>
+    </mat-accordion><br>
    </div>
 </div>
 <div class="loader_api" *ngIf="loaderStart">

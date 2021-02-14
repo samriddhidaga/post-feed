@@ -9,7 +9,7 @@ th {
     margin-bottom: 1rem;
     justify-content: space-between;
 }
-@media only screen and (max-width: 1133px) {
+@media only screen and (max-width: 1260px) {
     .search__panel {
         flex-direction: column;
     }
@@ -116,4 +116,7 @@ h3, h4 {
       width: 100% !important; } }
 .col-1-of-4 {
     margin-right: 2rem;
+}
+.panel__view {
+    margin-top: 2rem;
 }
