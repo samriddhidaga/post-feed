@@ -18,7 +18,7 @@ export class PostComponent implements OnInit {
   loaderStart = false;
   totalPosts = 0;
   postPerPage = 5;
-  currentPage = 1;
+  currentPage = 0;
   pageSizeOptions=[1,2,5,10];
 
   constructor(private defaultService: DefaultService,
