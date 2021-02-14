@@ -11,7 +11,7 @@ import { DefaultService } from '../default.service';
 export class PostDetailComponent implements OnInit {
 
   postId;
-  postData = '';
+  postData = {title: '', body: ''};
   loaderStart = false;
   showComments = false;
   comments;

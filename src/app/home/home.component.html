@@ -69,7 +69,7 @@
 <div class="panel__view" *ngIf="viewAsPanel">
    <div *ngFor="let user of cardList">
     <mat-accordion>
-        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+        <mat-expansion-panel>
             <mat-expansion-panel-header>
                 <mat-panel-title>
                     {{user.name}}
